@@ -43,18 +43,20 @@ const ChatBox = ({ socket, data }) => {
         messageListRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
-    toast(('Welcome to Room, ' + data.username), {
-        duration: 4000,
-        position: 'top-right',
-        style: {
-            backgroundColor: '#fdd596',
-            color: '#723277'
-        },
-        ariaProps: {
-            role: 'status',
-            'aria-live': 'polite',
-        },
-    });
+    useEffect(() => {
+        toast(('Welcome to Room, ' + data.username), {
+            duration: 4000,
+            position: 'top-right',
+            style: {
+                backgroundColor: '#fdd596',
+                color: '#723277'
+            },
+            ariaProps: {
+                role: 'status',
+                'aria-live': 'polite',
+            },
+        });
+    }, [])
 
     return (
         <div className="chat">
