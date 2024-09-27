@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import io from "socket.io-client";
 import "./App.css";
+import {Toaster} from 'react-hot-toast'
 import ChatBox from "./ChatBox";
 
-const socket = io.connect("https://chat-app-server-hjis.onrender.com");
+const socket = io.connect("http://localhost:5000");
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -57,6 +58,7 @@ const App = () => {
       ) : (
         <ChatBox socket={socket} data={formData} />
       )}
+      <Toaster />
     </div>
   );
 };
