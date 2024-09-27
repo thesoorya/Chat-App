@@ -56,6 +56,9 @@ const ChatBox = ({ socket, data }) => {
                 'aria-live': 'polite',
             },
         });
+        if(roomSize > 0){
+            toast.success('Server connected')
+        }
     }, [])
 
     return (
