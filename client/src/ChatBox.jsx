@@ -23,8 +23,7 @@ const ChatBox = ({ socket, data }) => {
             setMessage("");
         }
     };
-
-    useEffect(() => {
+    
     useEffect(() => {
     socket.on('receive_message', (messageData) => {
         setMessages((prevMessages) => [...prevMessages, messageData]);
