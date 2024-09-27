@@ -4,7 +4,7 @@ import "./App.css";
 import {Toaster} from 'react-hot-toast'
 import ChatBox from "./ChatBox";
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://chat-app-server-hjis.onrender.com");
 
 const App = () => {
   const [formData, setFormData] = useState({
