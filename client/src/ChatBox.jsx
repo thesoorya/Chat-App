@@ -25,19 +25,23 @@ const ChatBox = ({ socket, data }) => {
     };
 
     useEffect(() => {
-        socket.on('receive_message', (messageData) => {
-            setMessages((prevMessages) => [...prevMessages, messageData]);
-        });
+    socket.on('receive_message', (messageData) => {
+        setMessages((prevMessages) => [...prevMessages, messageData]);
+    });
 
-        socket.on('room_size', (roomData) => {
-            setRoomSize(roomData.size);
-        });
+    socket.on('room_size', (roomData) => {
+        setRoomSize(roomData.size);
+        if (roomData.size > 0) {
+            toast.success('Server connected');
+        }
+    });
 
-        return () => {
-            socket.off('receive_message');
-            socket.off('room_size');
-        };
-    }, [socket]);
+    return () => {
+        socket.off('receive_message');
+        socket.off('room_size');
+    };
+}, [socket]);
+
 
     useEffect(() => {
         messageListRef.current?.scrollIntoView({ behavior: "smooth" });
