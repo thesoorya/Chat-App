@@ -25,6 +25,7 @@ const ChatBox = ({ socket, data }) => {
     };
 
     useEffect(() => {
+    useEffect(() => {
     socket.on('receive_message', (messageData) => {
         setMessages((prevMessages) => [...prevMessages, messageData]);
     });
@@ -32,7 +33,14 @@ const ChatBox = ({ socket, data }) => {
     socket.on('room_size', (roomData) => {
         setRoomSize(roomData.size);
         if (roomData.size > 0) {
-            toast.success('Server connected');
+            toast.success('Server connected', {
+                duration: 4000,
+                position: 'top-right',
+                style: {
+                    backgroundColor: '#d4edda',
+                    color: '#155724'
+                },
+            });
         }
     });
 
@@ -41,7 +49,6 @@ const ChatBox = ({ socket, data }) => {
         socket.off('room_size');
     };
 }, [socket]);
-
 
     useEffect(() => {
         messageListRef.current?.scrollIntoView({ behavior: "smooth" });
